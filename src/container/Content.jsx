@@ -14,7 +14,7 @@ const Content = ({ user }) => {
 
   return (
     <div className="px-2 md:px-5">
-      <div className="bg-gray-400">
+      <div className="bg-gray-200">
         <Navbar
           searchTerm={searchTerm}
           setSearchTerm={setSearchTerm}
