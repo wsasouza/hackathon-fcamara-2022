@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { client } from '../client';
-// import { feedQuery, searchQuery } from '../utils/data';
+import { feedQuery, searchQuery } from '../utils/data';
 import MasonryLayout from './MasonryLayout';
 import Spinner from './Spinner';
 import EmptyList from './EmptyList';
@@ -17,20 +17,20 @@ const Feed = () => {
     setLoading(true);
 
     if (categoryId) {
-      // const query = searchQuery(categoryId);
-      // client.fetch(query)
-      //   .then((data) => {
-      //     setProfiles(data);
-      //     setLoading(false);
-      //   });
+      const query = searchQuery(categoryId);
+      client.fetch(query).then((data) => {
+        setProfiles(data);
+        setLoading(false);
+      });
     } else {
-      //  client.fetch(feedQuery)
-      //   .then((data) => {
-      //     setProfiles(data);
-      //     setLoading(false);
-      //   });
+      client.fetch(feedQuery).then((data) => {
+        setProfiles(data);
+        setLoading(false);
+      });
     }
   }, [categoryId]);
+
+  console.log(profiles);
 
   if (loading) return <Spinner message="Procurando membros" />;
 
