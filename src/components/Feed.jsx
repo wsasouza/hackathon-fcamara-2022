@@ -16,21 +16,20 @@ const Feed = () => {
   useEffect(() => {
     setLoading(true);
 
-    if(categoryId) {
-       const query = searchQuery(categoryId);
-
-      client.fetch(query)
-        .then((data) => {
-          setProfiles(data);
-          setLoading(false);
-        });
+    if (categoryId) {
+      // const query = searchQuery(categoryId);
+      // client.fetch(query)
+      //   .then((data) => {
+      //     setProfiles(data);
+      //     setLoading(false);
+      //   });
     } else {
-       client.fetch(feedQuery)
-        .then((data) => {
-          setProfiles(data);
-          setLoading(false);
-        });
-      }
+      //  client.fetch(feedQuery)
+      //   .then((data) => {
+      //     setProfiles(data);
+      //     setLoading(false);
+      //   });
+    }
   }, [categoryId]);
 
   if (loading) return <Spinner message="Procurando membros" />;
